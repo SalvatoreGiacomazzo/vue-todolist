@@ -24,16 +24,22 @@
         <main>
             <div id="container" class="container w-50 h-50 border border-dark rounded bg-info mt-4">
                 <!--Actual List-->
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between w-100" v-for="(task) in tasks">
-                        <p
-                            v-bind:class="{ 'text-decoration-line-through': task.done === 'true', 'text-danger': task.done === 'false' }">
+                <ul class="list-group" v-if="tasks.length > 0">
+                    <li class="list-group-item d-flex justify-content-between w-100" v-for="(task, index) in tasks">
+
+                        <p v-bind:class="{ 'text-decoration-line-through': task.done === 'true', 'text-danger': task.done === 'false' }"
+                            @click="toggleTask(index)">
                             {{ task.text }}</p>
 
-                        <i class="fa-solid fa-trash-can" @click="deleteTask(task)"></i>
+                        <i class="fa-solid fa-trash-can" @click="deleteTask(index)"></i>
                     </li>
-
                 </ul>
+                <h4 v-else>All tasks are done! You deserve a break!</h4>
+                <div class="container d-flex justify-content-between">
+                    <input id="task-input" class="form-control mt-5 w-75" type="text" placeholder="Add a task..."
+                        v-model="newLi">
+                    <button type="button" class="btn btn-success mt-5" @click="addTask(newLi)">Add</button>
+                </div>
             </div>
         </main>
         <footer class="blockquote text-center m-5 ">Stay Productive, Stay Resilient</footer>

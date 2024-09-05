@@ -3,6 +3,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            newLi: '',
 
             tasks: [
                 {
@@ -31,8 +32,14 @@ createApp({
 
     },
     methods: {
-        deleteTask(task) {
-            this.tasks.splice(task, 1)
+        deleteTask(index) {
+            this.tasks.splice(index, 1)
+        },
+        addTask(content) {
+            if (content.trim() !== '') {
+                this.tasks.push({ text: content, done: 'false' })
+                this.NewLi = ''
+            }
         }
     }
 }).mount('#app')
