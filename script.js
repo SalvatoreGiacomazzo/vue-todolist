@@ -36,10 +36,13 @@ createApp({
             this.tasks.splice(index, 1)
         },
         addTask(content) {
-            if (content.trim() !== '') {
+            if (content.trim() === '' || 3 >= content.length) {
+                alert('Please insert a valid task')
+            } else {
                 this.tasks.push({ text: content, done: 'false' })
                 this.NewLi = ''
             }
+
         },
         toggleTask(index) {
             this.tasks[index].done = this.tasks[index].done === 'true' ? 'false' : 'true'
