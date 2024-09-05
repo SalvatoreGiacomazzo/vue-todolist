@@ -40,6 +40,9 @@ createApp({
                 this.tasks.push({ text: content, done: 'false' })
                 this.NewLi = ''
             }
+        },
+        toggleTask(index) {
+            this.tasks[index].done = this.tasks[index].done === 'true' ? 'false' : 'true'
         }
     }
 }).mount('#app')

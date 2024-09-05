@@ -37,7 +37,7 @@
                 <h4 v-else>All tasks are done! You deserve a break!</h4>
                 <div class="container d-flex justify-content-between">
                     <input id="task-input" class="form-control mt-5 w-75" type="text" placeholder="Add a task..."
-                        v-model="newLi">
+                        v-model="newLi" @keyup.enter="addTask(newLi)">
                     <button type="button" class="btn btn-success mt-5" @click="addTask(newLi)">Add</button>
                 </div>
             </div>
